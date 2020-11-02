@@ -1,5 +1,8 @@
 # Node modules
-frontend/node_modules
+server/node_modules
+client/node_modules
+node_modules
+template
 
 # Logs
 logs

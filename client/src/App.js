@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 // import data from './data';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
+import HomeScreen from './pages/HomeScreen';
+import ProductScreen from './pages/ProductScreen';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
             <button onClick={openMenu}>
                 &#9776;
             </button>
-            <Link to="/">ePet-shop</Link>
+            <Link to="/">Google Book Store</Link>
           </div>
           <div className="header-links">
             <a href="services.html">Services</a>
@@ -36,25 +36,25 @@ function App() {
               <button className="sidebar-close-button" onClick={closeMenu}>X</button>
             </div>
           </a>    
-          <div className="hmenu-header">Shop by Category</div>
+          <div className="hmenu-header">Find by Genre</div>
           <ul className="hmenu-content">
             <li>
               <a href="index.html" className="hmenu-item" data-menu-id="1">
-                Fashion
+                Mystery&Thriller
                 <i className="fas fa-chevron-right hmenu-icon"></i>
               </a>
             </li>
             <li>
-                <a href="index.html" className="hmenu-item" data-menu-id="1">
-                  Food
-                  <i className="fas fa-chevron-right hmenu-icon"></i>
-                </a>
+              <a href="index.html" className="hmenu-item" data-menu-id="1">
+                Historical&Fiction
+                <i className="fas fa-chevron-right hmenu-icon"></i>
+              </a>
             </li>
             <li>
-                <a href="index.html" className="hmenu-item" data-menu-id="1">
-                  Pet Care
-                  <i className="fas fa-chevron-right hmenu-icon"></i>
-                </a>
+              <a href="index.html" className="hmenu-item" data-menu-id="1">
+                Romance
+                <i className="fas fa-chevron-right hmenu-icon"></i>
+              </a>
             </li>
           </ul>
         </aside>

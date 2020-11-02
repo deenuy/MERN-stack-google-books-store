@@ -1,7 +1,7 @@
 {
-  "name": "e-petshop",
+  "name": "google-books-store",
   "version": "1.0.0",
-  "description": "Demo : https://e-petshop.herokuapp.com/",
+  "description": "Google Books Store is a react-based full stack app developed for users to discover books and bookmark in favorite collections by Genre so that users can purchase later. This app is developed on platform of MERN stack i.e. REACT, Node, Express and MongoDB.",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.702.0",
@@ -23,20 +23,20 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "nodemon --watch backend --exec babel-node backend/server.js",
-    "build": "rm -rf dist && babel backend -d dist  && cd frontend && npm install && npm run build",
+    "start": "nodemon --watch server --exec babel-node server/server.js",
+    "build": "rm -rf dist && babel server -d dist  && cd frontend && npm install && npm run build",
     "heroku-postbuild-x": "npm run build && cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/correaph/e-petshop.git"
+    "url": "git+https://github.com/deenuy/MERN-stack-google-books-store.git.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/correaph/e-petshop/issues"
+    "url": "https://github.com/deenuy/MERN-stack-google-books-store.git/issues"
   },
-  "homepage": "https://github.com/correaph/e-petshop#readme",
+  "homepage": "https://github.com/deenuy/MERN-stack-google-books-store.git#readme",
   "engines": {
     "node": "12.4.0",
     "npm": "6.9.0"
