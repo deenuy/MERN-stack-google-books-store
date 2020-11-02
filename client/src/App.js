@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 // import data from './data';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
-import HomeScreen from './pages/HomeScreen';
-import ProductScreen from './pages/ProductScreen';
+import BooksScreen from './components/pages/BooksScreen.js'
+import HomeScreen from './components/pages/HomeScreen';
+import ProductScreen from './components/pages/ProductScreen';
 
 
 function App() {
@@ -60,8 +61,8 @@ function App() {
         </aside>
         <main className="main">
           <div className="content">
-            <Route path="/product/:id" exact={true} component={ProductScreen} />
-            <Route path="/" exact={true} component={HomeScreen} />
+            <Route path="/api/books/:id" exact={true} component={ProductScreen} />
+            <Route path="/api/books" exact={true} component={BooksScreen} />
           </div>
         </main>
         <footer className="footer">
