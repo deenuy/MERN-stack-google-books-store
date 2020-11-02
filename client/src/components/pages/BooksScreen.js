@@ -43,8 +43,8 @@ function BooksScreen (props){
                   <Link to={"/product/" + book._id}>
                   {book.title}</Link>
                 </div>
-                <div className="product-brand">{book.category}</div>
-                <div className="product-price">${book.price}</div>
+                <div className="product-brand">Genre: {book.category}</div>
+                <div className="product-price">Author: {book.authors}</div>
                 <div className="product-rating">{book.rating} Stars ({book.numReviews})</div>
               </div>
             </li>

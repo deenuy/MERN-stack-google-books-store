@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 // import data from './data';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
@@ -6,14 +6,59 @@ import BooksScreen from './components/pages/BooksScreen.js'
 import HomeScreen from './components/pages/HomeScreen';
 import ProductScreen from './components/pages/ProductScreen';
 
+// fontawesome Explicit import
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { QueryCursor } from 'mongoose';
 
 function App() {
+  //functions for side menu
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
   }
   const closeMenu = () => {
     document.querySelector(".sidebar").classList.remove("open");
   }
+
+  // Google book api ajax request
+  const[googleBooks, setGoogleBooks] = useState([]);
+  const[search, setSearch] = useState("");
+  const[query, setQuery] = useState('react');
+
+  useEffect(() =>{
+    console.log("Effect has been run");
+    getBooks();
+  }, [query]);
+
+  const getBooks = async () => {
+    console.log("Search is initiated")
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+    const data = await response.json();
+    console.log('Number of books found: '+data.totalItems)
+    setGoogleBooks(data.items);
+    console.log(data.items);
+
+    fs.writeFileSync('./output/README.md', result, (error) => {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(error.message);
+      }
+      console.log('\n\nREADME.md is successfully generated!\n');
+    });
+  };
+
+  const updateSearch = e => {
+    setSearch(e.target.value);
+  }
+
+  const getSearch = e => {
+    e.preventDefault(); //To stop page refresh
+    setQuery(search);
+  }
+
+
+
   return (
     <BrowserRouter>
       <div className="grid-container">
@@ -23,6 +68,13 @@ function App() {
                 &#9776;
             </button>
             <Link to="/">Google Book Store</Link>
+          </div>
+          <div className="search-block">
+            <div className="search-panel">
+              <input type="text" value={search} onChange={updateSearch} placeholder="Search books from Google API" className="search-input"/>
+            </div>
+            {/* <button type="submit" className="search-button">Search</button> */}
+            <FontAwesomeIcon icon={faSearch} onClick={getSearch} style={{width: "10rem", height: "2.8rem", paddingTop: ".6rem", cursor: "pointer"}} />
           </div>
           <div className="header-links">
             <a href="services.html">Services</a>
@@ -65,7 +117,7 @@ function App() {
           </div>
         </main>
         <footer className="footer">
-          All rights reserved
+          © Copyright - Deenu's Portfolio Work
         </footer>
       </div>
     </BrowserRouter>
