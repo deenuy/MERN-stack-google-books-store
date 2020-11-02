@@ -4,9 +4,9 @@ import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
 
-// GET API to findOne by ID
-router.get('/api/books/', async (req, res) => {
-  const book = await Books.findOne({ productId: req.params.id });
+// GET API to findAll
+router.get('/', async (req, res) => {
+  const book = await Books.find({ });
   if (book) {
     res.send(book);
   } else {
@@ -15,7 +15,7 @@ router.get('/api/books/', async (req, res) => {
 });
 
 // GET API to findOne by ID
-router.get('/api/books/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   const book = await Books.findOne({ productId: req.params.id });
   if (book) {
     res.send(book);
@@ -25,7 +25,7 @@ router.get('/api/books/:id', async (req, res) => {
 });
 
 // GET API to findAll by searchKeyword and category
-router.get('/api/books/category', async (req, res) => {
+router.get('/category', async (req, res) => {
   const category = req.query.category ? { category: req.query.category } : {};
   const searchKeyword = req.query.searchKeyword
     ? {
@@ -47,7 +47,7 @@ router.get('/api/books/category', async (req, res) => {
 });
 
 // DELETE API to findOne by ID and delete
-router.delete('/api/books/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const deletedBook = await Books.findById(req.params.id);
   if (deletedBook) {
     await deletedBook.remove();
@@ -58,7 +58,7 @@ router.delete('/api/books/:id', async (req, res) => {
 });
 
 // POST API to findOne by ID and delete
-router.post('/api/books/add', async (req, res) => {
+router.post('/add', async (req, res) => {
   const book = new Books({
     productId: req.body.productId,
     title: req.body.title,

@@ -61,8 +61,7 @@ function App() {
         </aside>
         <main className="main">
           <div className="content">
-            <Route path="/api/books/:id" exact={true} component={ProductScreen} />
-            <Route path="/api/books" exact={true} component={BooksScreen} />
+            <Route path="/" exact={true} component={BooksScreen} />
           </div>
         </main>
         <footer className="footer">

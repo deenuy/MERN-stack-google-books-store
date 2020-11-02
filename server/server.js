@@ -20,7 +20,7 @@ mongoose
 
 const app = express();
 app.use(bodyParser.json());
-app.use('./api/books', booksRoute);
+app.use('/api/books', booksRoute);
 app.use('/api/uploads', uploadRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);

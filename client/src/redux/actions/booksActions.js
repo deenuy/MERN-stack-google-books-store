@@ -8,6 +8,9 @@ const listBooks = () => async (dispatch) => {
     try{
         dispatch({type: BOOK_LIST_REQUEST});
         const {data} = await axios.get("/api/books");
+
+        
+
         dispatch({type: BOOK_LIST_SUCCESS, payload: data})
     }
     catch(error){

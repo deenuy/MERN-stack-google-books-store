@@ -6,23 +6,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { listBooks } from '../../redux/actions/booksActions';
 
 function BooksScreen (props){
+  
   // Add hooks
-  // const [books, setProduct] = useState([]);
-  const bookList = useSelector(state => state.bookList);
-  const { books, loading, error } = bookList;
-
+  const booksList = useSelector(state => state.booksList);
+  // console.log(JSON.stringify(booksList));
+  const { books, loading, error } = booksList;
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(listBooks())
 
-    // const fetchData = async () => {
-    //   const {data} = await axios.get("api/books");
-    //   setProduct(data);
-    //   console.log(data);
-    // }
+  useEffect(() => {
+    console.log("Effect has been run");
     
-    // fetchData();
+    dispatch(listBooks())
 
     return () => {
       // 
@@ -34,23 +29,23 @@ function BooksScreen (props){
     // Home screen container
     <div className="homescreen-container" >
       <div className="product-container">
-        <p className="product-results">1 - 48 of 5606 results</p>
+        <p className="product-results">My Saved Collections</p>
         <ul className="products">
           {
             books.map(book => 
             // To get the li with unique key product id
-            <li key={books._id}>
+            <li key={book._id}>
               <div className="product">
-                <Link to={"/api/books/" + books._id}>
-                <img className="product-image" src={books.image} alt="product_image"/>
+                <Link to={"/api/books/" + book._id}>
+                <img className="product-image" src={book.image} alt="product_image"/>
                 </Link>
                 <div className="product-name">
-                  <Link to={"/product/" + books._id}>
-                  {books.name}</Link>
+                  <Link to={"/product/" + book._id}>
+                  {book.title}</Link>
                 </div>
-                <div className="product-brand">{books.category}</div>
-                <div className="product-price">${books.price}</div>
-                <div className="product-rating">{books.rating} Stars ({books.numReviews})</div>
+                <div className="product-brand">{book.category}</div>
+                <div className="product-price">${book.price}</div>
+                <div className="product-rating">{book.rating} Stars ({book.numReviews})</div>
               </div>
             </li>
             )
