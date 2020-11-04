@@ -12,13 +12,13 @@ function BooksScreen (props){
   // console.log(JSON.stringify(booksList));
   const { books, loading, error } = booksList;
   const dispatch = useDispatch();
-
+  const [source, setSource] = useState('db');
 
   useEffect(() => {
     console.log("Effect has been run");
     
-    dispatch(listBooks())
-
+    dispatch(listBooks(source));
+    
     return () => {
       // 
     }

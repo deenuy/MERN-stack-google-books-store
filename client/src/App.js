@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 // import data from './data';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
@@ -10,6 +11,7 @@ import ProductScreen from './components/pages/ProductScreen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { QueryCursor } from 'mongoose';
+import { listBooks } from './redux/actions/booksActions';
 
 function App() {
   //functions for side menu
@@ -24,29 +26,26 @@ function App() {
   const[googleBooks, setGoogleBooks] = useState([]);
   const[search, setSearch] = useState("");
   const[query, setQuery] = useState('react');
+  const [source, setSource] = useState('');
+
+  const dispatch = useDispatch();
 
   useEffect(() =>{
     console.log("Effect has been run");
-    getBooks();
+    // getBooks();
+
+    dispatch(listBooks(source));
+
   }, [query]);
 
-  const getBooks = async () => {
-    console.log("Search is initiated")
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-    const data = await response.json();
-    console.log('Number of books found: '+data.totalItems)
-    setGoogleBooks(data.items);
-    console.log(data.items);
-
-    fs.writeFileSync('./output/README.md', result, (error) => {
-      if (error) {
-        console.log(error)
-      } else {
-        console.log(error.message);
-      }
-      console.log('\n\nREADME.md is successfully generated!\n');
-    });
-  };
+  // const getBooks = async () => {
+  //   console.log("Search is initiated")
+  //   const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+  //   const data = await response.json();
+  //   console.log('Number of books found: '+data.totalItems)
+  //   setGoogleBooks(data.items);
+  //   console.log(data.items);
+  // };
 
   const updateSearch = e => {
     setSearch(e.target.value);
@@ -55,6 +54,7 @@ function App() {
   const getSearch = e => {
     e.preventDefault(); //To stop page refresh
     setQuery(search);
+    setSource('api');
   }
 
 
