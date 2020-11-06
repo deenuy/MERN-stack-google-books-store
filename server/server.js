@@ -9,12 +9,14 @@ import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 import uploadRoute from './routes/uploadRoute';
 
-const mongodbUrl = config.MONGODB_URL;
+const localMongodbUrl = config.MONGODB_URL;
 mongoose
-  .connect(mongodbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
+  .connect(
+    process.env.MONGODB_URI || localMongodbUrl, 
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
   })
   .catch((error) => console.log(error.reason));
 
