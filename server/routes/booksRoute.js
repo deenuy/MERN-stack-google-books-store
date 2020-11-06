@@ -1,6 +1,5 @@
 import express from 'express';
 import Books from '../models/booksModel';
-import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
 

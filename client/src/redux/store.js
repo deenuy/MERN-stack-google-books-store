@@ -1,12 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { productListReducer, productDetailsReducer } from './reducers/productReducers.js';
 import { bookListReducer, bookDetailsReducer } from './reducers/bookReducer';
 
 const initialState = {};
 const reducer = combineReducers({
-    productList: productListReducer,
-    productDetails: productDetailsReducer,
     booksList: bookListReducer,
     bookDetails: bookDetailsReducer
 });

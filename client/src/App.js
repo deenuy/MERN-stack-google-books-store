@@ -4,8 +4,6 @@ import './App.css';
 // import data from './data';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 import BooksScreen from './components/pages/BooksScreen.js'
-import HomeScreen from './components/pages/HomeScreen';
-import ProductScreen from './components/pages/ProductScreen';
 
 // fontawesome Explicit import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,15 +36,6 @@ function App() {
 
   }, [query]);
 
-  // const getBooks = async () => {
-  //   console.log("Search is initiated")
-  //   const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-  //   const data = await response.json();
-  //   console.log('Number of books found: '+data.totalItems)
-  //   setGoogleBooks(data.items);
-  //   console.log(data.items);
-  // };
-
   const updateSearch = e => {
     setSearch(e.target.value);
   }
@@ -56,8 +45,6 @@ function App() {
     setQuery(search);
     setSource('api');
   }
-
-
 
   return (
     <BrowserRouter>
